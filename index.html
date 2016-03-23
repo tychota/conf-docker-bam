@@ -119,6 +119,26 @@
         color: #333;
       }
 
+      .reveal pre code {
+          max-height: 100%;
+      }
+
+      .overimage-title {
+          background-color: rgba(255, 255, 255, 0.7);
+          border-radius: 5px;
+          border: 3px solid #2b3e4f;
+      }
+      .overimage-title  h1,
+      .overimage-title h2,
+      .overimage-title h3,
+      .overimage-title  h4 {
+          color: #2b3e4f;
+      }
+
+      .reveal h1 small, .reveal h2 small, .reveal h3 small {
+          display: block;
+      }
+
     </style>
 
 	</head>
@@ -132,20 +152,16 @@
 					<h1>Docker</h1>
 				</section>
 
-
-        
-       
-        
         <!--
         ========================================================================
         Partie 1
         ========================================================================
         -->
-        
+
         <section data-background="images/wall2.jpg" data-transition="none">
 					<h1>What is docker ?</h1>
 				</section>
-        
+
         <section data-background="images/wall1.jpg" data-transition="none">
           <h1>Pros ?</h1>
         </section>
@@ -156,41 +172,41 @@
             Single reponsability
           </h2>
 				</section>
-        
+
         <section data-background="images/wall1.jpg" data-transition="none">
           <h2>
-            Isolation 
+            Isolation
           </h2>
 				</section>
-        
+
         <section data-background="images/wall1.jpg" data-transition="none">
           <h2>
-            Environment creation and provisionning 
+            Environment creation and provisionning
           </h2>
 				</section>
-        
+
         <section data-background="images/wall1.jpg" data-transition="none">
           <h2>
-            Usable in Production 
+            Usable in Production
           </h2>
 				</section>
-        
+
         <section data-background="images/wall0.jpg" data-transition="none">
-          <h1> Cons </h1> 
+          <h1> Cons </h1>
 				</section>
-        
+
         <section data-background="images/wall0.jpg" data-transition="none">
           <h2>
             Reacreate every time
           </h2>
 				</section>
-        
+
         <section data-background="images/wall0.jpg" data-transition="none">
           <h2>
             Layered architecture make it slow.
           </h2>
 				</section>
-        
+
         <section data-background="images/wall0.jpg" data-transition="none">
           <h2>
             Optimized for Linux
@@ -221,49 +237,133 @@
         <section data-background="images/wall2.jpg" data-transition="none">
           <h2>It uses Linux Kernel</h2>
         </section>
-        
+
         <!--
         ========================================================================
         Partie 3
         ========================================================================
         -->
-        
-				<section  data-background="images/wall3.jpg" data-transition="none">
-          <h1>How we can use it ?</h1>
-				</section>
-        
+
         <section data-background="images/wall2.jpg" data-transition="none">
-        <h2>Create a dockerfile</h2>
-            <pre><code class="hljs docker" data-trim contenteditable>
-FROM ubuntu:14.04 
+            <h1>Utilisation Basique</h1>
+        </section>
+
+        <section data-background="images/wall2.jpg" data-transition="none">
+            <img src="images/dockerizeEverything.jpg" width="900" />
+        </section>
+
+        <section  data-background="images/wall2.jpg" data-transition="none">
+            <h2>Créer un Dockerfile</h2>
+            <pre><code class"Dockerfile">
+FROM ubuntu:14.04
 MAINTAINER Nicolas Djambazian
+
 # install node
 RUN apt-get update && apt-get install -y nodejs npm
-COPY back/package.json /src/package.json 
+
+COPY back/package.json /src/package.json
 RUN cd /src; npm install --production
-# Bundle app source COPY back/ /src
+
+# Bundle app source
+COPY back/ /src
+
 EXPOSE 80
 ENV APP_PORT 80
+
 CMD ["nodejs", "/src/index.js"]
             </code></pre>
         </section>
-        
-                <section data-background="images/wall2.jpg" data-transition="none">
-        <h2>... And Run IT</h2>
-            <pre><code class="hljs bash" data-trim contenteditable>
-docker build -t username/my-app .
-docker run -p 3000:80 -d username/my-app
 
-docker-machine ls 
+        <section  data-background="images/wall2.jpg" data-transition="none">
+            <p>Docker garde un cache et reconstruit tout depuis le dernier changement.</p>
+            <p>D'où :</p>
+            <pre><code class"Dockerfile">
+RUN apt-get update && apt-get install -y nodejs npm
+            </code></pre>
+            <p>Et </p>
+            <pre><code class"Dockerfile">
+COPY back/package.json /src/package.json
+RUN cd /src; npm install --production
+
+# Bundle app source
+COPY back/ /src
             </code></pre>
         </section>
-        
+
         <section data-background="images/wall2.jpg" data-transition="none">
+            <h3>Tant qu'à faire, on réutilise l'existant</h3>
+            <pre><code class"Dockerfile">
+FROM node:4
+MAINTAINER Nicolas Djambazian
+
+# no node install
+            </code></pre>
+        </section>
+
+        <section data-background="images/eniac.jpg" data-transition="none">
+
+            <div class="overimage-title">
+                <h2>
+                    En docker, on ne fait pas de grosse machine
+                    <small>On découpe</small>
+                </h2>
+            </div>
 
         </section>
 
-        
 
+        <section  data-background="images/wall2.jpg" data-transition="none">
+            <h3>Ajout d'une BDD avec docker-compose</h3>
+
+            <pre><code class"yaml">
+# docker-compose.yml
+back:
+    build: .
+    volumes:
+            - "./back/:/src"
+    ports:
+            - "3000:80"
+    links:
+            - db
+
+db:
+    image: mysql:5.7
+    ports:
+        - "3306:3306"
+    environment:
+            - "MYSQL_ROOT_PASSWORD=rootPassword"
+            - "MYSQL_USER=user"
+            - "MYSQL_PASSWORD=pass"
+            - "MYSQL_DATABASE=database"
+            </code></pre>
+        </section>
+
+
+        <section data-background="images/wall2.jpg" data-transition="none">
+            <p>Utilisation :</p>
+
+            <pre><code class"js">
+"mysql://user:pass@db:3306/database"
+            </code></pre>
+
+            <p>Rappel :</p>
+            <pre><code class"yaml">
+# docker-compose.yml
+back:
+    build: .
+    links:
+            - db
+
+db:
+    image: mysql:5.7
+    ports:
+        - "3306:3306"
+            </code></pre>
+        </section>
+
+        <section data-background="images/wall2.jpg" data-transition="none">
+            <h3></h3>
+        </section>
 
       </div> <!-- .slides -->
     </div> <!-- .reveal -->
