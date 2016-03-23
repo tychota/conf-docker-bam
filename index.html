@@ -135,6 +135,10 @@
           color: #2b3e4f;
       }
 
+      .emph {
+            color: #68152e;
+      }
+
       .reveal h1 small, .reveal h2 small, .reveal h3 small {
           display: block;
       }
@@ -274,6 +278,23 @@ CMD ["nodejs", "/src/index.js"]
             </code></pre>
         </section>
 
+        <section data-background="images/wall2.jpg" data-transition="none">
+            <h3>Et c'est parti !</h3>
+
+            <pre><code class"bash">
+docker build -t username/my-app .
+docker run -p 3000:80 -d username/my-app
+            </code></pre>
+
+            <p>Sur MacOS, docker tourne dans une machine virtuelle</p>
+            <pre><code class"bash">
+$ docker-machine ps
+TODO : Example de réponse
+$ wget IP:3000
+TODO resultat sur le 1er commit
+            </code></pre>
+        </section>
+
         <section  data-background="images/wall2.jpg" data-transition="none">
             <p>Docker garde un cache et reconstruit tout depuis le dernier changement.</p>
             <p>D'où :</p>
@@ -304,7 +325,7 @@ MAINTAINER Nicolas Djambazian
 
             <div class="overimage-title">
                 <h2>
-                    En docker, on ne fait pas de grosse machine
+                    En <span class="emph">docker</span>, on ne fait pas de grosse <span class="emph">machine</span>
                     <small>On découpe</small>
                 </h2>
             </div>
@@ -362,7 +383,68 @@ db:
         </section>
 
         <section data-background="images/wall2.jpg" data-transition="none">
+            <h1>Astuces pratique</h1>
+        </section>
+
+        <section data-background="images/wall2.jpg" data-transition="none">
+            <h2>Gestion des souces</h2>
+
+            <p>Dans le même Dossier/repo (<code class="bash">git submodule</code> éventuellement)</p>
+
+            <p>On deversionne le docker-compose.yml (docker-compose.yml.dist) pour pouvoir le personnaliser</p>
+        </section>
+        <section data-background="images/wall2.jpg" data-transition="none">
+            <h3>Sync des sources en continue</h3>
+            <pre><code class"yaml">
+# docker-compose.yml
+back:
+    build: .
+    volumes:
+            - "./back/:/src"
+            </pre></code>
+
+            Ou
+            <pre><code class"yaml">
+# docker-compose.yml
+back:
+    build: .
+    volumes:
+            - "../moBackDanUnAutreRepo/:/src"
+            </pre></code>
+
+        </section>
+
+        <section data-background="images/wall2.jpg" data-transition="none">
+            <h3>Gestion des log/uploads/cache</h3>
+
+            <p>Pour pas tout perdre à chaque build</p>
+            <pre><code class"Dockerfile">
+VOLUME /var/log /src/cache
+            </code></pre>
+
+            <p>Pour les consulter sans se connecter au container</p>
+            <pre><code class"yaml">
+# docker-compose.yml
+back:
+    build: .
+    volumes:
+            - "logs/:/var/log"
+            </pre></code>
+        </section>
+
+        <section data-background="images/wall2.jpg" data-transition="none">
             <h3></h3>
+        </section>
+
+
+        <section  data-background="images/wall0.jpg" data-transition="none">
+            <h1>Conclusion</h1>
+        </section>
+
+
+        <section  data-background="images/wall0.jpg" data-transition="none">
+            <h2>Questions?</h2>
+            <h2>Merci!</h2>
         </section>
 
       </div> <!-- .slides -->
