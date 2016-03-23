@@ -4,9 +4,9 @@
 	<head>
 		<meta charset="utf-8">
 
-    <title>Sentry</title>
+    <title>Docker</title>
 
-		<meta name="description" content="Un super produit de discqus">
+		<meta name="description" content="The new revolution">
 		<meta name="author" content="Tycho Tatitscheff">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
@@ -40,7 +40,7 @@
     <style>
 
       .reveal pre {
-        font-size: 0.65em;
+        font-size: 0.55em;
         /* line-height: 1.2em; */
       }
 
@@ -128,17 +128,11 @@
 		<div class="reveal">
 
 			<div class="slides">
-				<section data-background="images/wall0.jpg" data-transition="none">
+				<section data-background="images/wall2.jpg" data-transition="none">
 					<h1>Docker</h1>
 				</section>
 
-        <section data-background="images/wall0.jpg" data-transition="none">
 
-        </section>
-          
-        <section data-background="images/wall0.jpg" data-transition="none">
-
-        </section>
         
        
         
@@ -148,42 +142,61 @@
         ========================================================================
         -->
         
+        <section data-background="images/wall2.jpg" data-transition="none">
+					<h1>What is docker ?</h1>
+				</section>
+        
         <section data-background="images/wall1.jpg" data-transition="none">
-          <h1>Partie I : Javascript</h1>
+          <h1>Pros ?</h1>
         </section>
 
 
 				<section data-background="images/wall1.jpg" data-transition="none">
-
+          <h2>
+            Single reponsability
+          </h2>
 				</section>
         
         <section data-background="images/wall1.jpg" data-transition="none">
-
+          <h2>
+            Isolation 
+          </h2>
 				</section>
         
         <section data-background="images/wall1.jpg" data-transition="none">
-
+          <h2>
+            Environment creation and provisionning 
+          </h2>
 				</section>
         
         <section data-background="images/wall1.jpg" data-transition="none">
-
+          <h2>
+            Usable in Production 
+          </h2>
 				</section>
         
-        <section data-background="images/wall1.jpg" data-transition="none">
-
+        <section data-background="images/wall0.jpg" data-transition="none">
+          <h1> Cons </h1> 
 				</section>
         
-        <section data-background="images/wall1.jpg" data-transition="none">
-
+        <section data-background="images/wall0.jpg" data-transition="none">
+          <h2>
+            Reacreate every time
+          </h2>
 				</section>
         
-        <section data-background="images/wall1.jpg" data-transition="none">
-					<h2>Autres Outils</h2>
-          <h4>Flowtype</h4>
-          <div style="height: 600px">
-            <img src="images/flow.png">
-          </div>
+        <section data-background="images/wall0.jpg" data-transition="none">
+          <h2>
+            Layered architecture make it slow.
+          </h2>
 				</section>
+        
+        <section data-background="images/wall0.jpg" data-transition="none">
+          <h2>
+            Optimized for Linux
+          </h2>
+				</section>
+
 
         <!--
         ========================================================================
@@ -192,48 +205,64 @@
         -->
 
 				<section data-background="images/wall2.jpg" data-transition="none">
-
+          <h1>How it works ?</h1>
 				</section>
 
 				<section data-background="images/wall2.jpg" data-transition="none">
-
-				</section>
-
-        
-
-
-        <section data-background="images/wall2.jpg" data-transition="none">
-
-        </section>
-        
-				<section  data-background="images/wall2.jpg" data-transition="none">
-
+          <h2>VM / Container</h2>
+          <div class="span6 fragments" style="display: flex;height: 40vh;align-items: flex-end;">
+            <img src="images/VM.png">
           </div>
+          <div class="span6 fragments" style="display: flex;height: 40vh;align-items: flex-end;">
+            <img src="images/container.png">
+          </div>
+				</section>
 
+        <section data-background="images/wall2.jpg" data-transition="none">
+          <h2>It uses Linux Kernel</h2>
+        </section>
+        
+        <!--
+        ========================================================================
+        Partie 3
+        ========================================================================
+        -->
+        
+				<section  data-background="images/wall3.jpg" data-transition="none">
+          <h1>How we can use it ?</h1>
 				</section>
         
         <section data-background="images/wall2.jpg" data-transition="none">
+        <h2>Create a dockerfile</h2>
+            <pre><code class="hljs docker" data-trim contenteditable>
+FROM ubuntu:14.04 
+MAINTAINER Nicolas Djambazian
+# install node
+RUN apt-get update && apt-get install -y nodejs npm
+COPY back/package.json /src/package.json 
+RUN cd /src; npm install --production
+# Bundle app source COPY back/ /src
+EXPOSE 80
+ENV APP_PORT 80
+CMD ["nodejs", "/src/index.js"]
+            </code></pre>
+        </section>
+        
+                <section data-background="images/wall2.jpg" data-transition="none">
+        <h2>... And Run IT</h2>
+            <pre><code class="hljs bash" data-trim contenteditable>
+docker build -t username/my-app .
+docker run -p 3000:80 -d username/my-app
 
+docker-machine ls 
+            </code></pre>
         </section>
         
         <section data-background="images/wall2.jpg" data-transition="none">
 
         </section>
 
-
-
-
         
-        
-        <section  data-background="images/wall0.jpg" data-transition="none">
-          <h1>Conclusion</h1>
-        </section>
-        
-
-        <section  data-background="images/wall0.jpg" data-transition="none">
-          <h2>Questions?</h2>
-          <h2>Merci!</h2>
-        </section>
 
 
       </div> <!-- .slides -->
@@ -252,7 +281,7 @@
 				history: true,
 				center: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'none', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins
 				dependencies: [
