@@ -154,6 +154,11 @@
 			<div class="slides">
 				<section data-background="images/wall2.jpg" data-transition="none">
 					<h1>Docker</h1>
+
+                    <div style="position: relative; bottom: -100px; font-size: 25px;">
+                        <p style="text-align: left; float: left;">Length : ~30min</p>
+                        <p style="text-align: right; float: right;">You can ask questions any time ! </p>
+                    </div>
 				</section>
 
         <!--
@@ -253,7 +258,7 @@
         </section>
 
         <section data-background="images/wall2.jpg" data-transition="none">
-            <img src="images/dockerizeEverything.jpg" width="900" />
+            <img src="images/docker-all-the-things.png" width="500" />
         </section>
 
         <section  data-background="images/wall2.jpg" data-transition="none">
@@ -432,19 +437,52 @@ back:
             </pre></code>
         </section>
 
-        <section data-background="images/wall2.jpg" data-transition="none">
-            <h3></h3>
+        <section data-background="images/ship.jpg" data-transition="none">
+            <h1>Manipulation des Container</h1>
+        </section>
+
+        <section  data-background="images/wall0.jpg" data-transition="none">
+            <h2>Image vs Container</h2>
+
+            <p>Image : System buildé et configuré n'éyant jamais tourné</p>
+
+            <p>Container : Instance d'une image ayant tournée / en fonctionnement</p>
+        </section>
+
+        <section  data-background="images/wall0.jpg" data-transition="none">
+            <h2>Commandes basique</h2>
+
+            <table>
+                <tr><td>Container actifs</td><td><code>docker ps</code></td></tr>
+                <tr><td>Tous les container</td><td><code>docker ps -a</code></td></tr>
+                <tr><td>Images</td><td><code>docker images</code></td></tr>
+                <tr><td>Supprimer un container</td><td><code>docker rm</code></td></tr>
+                <tr><td>Supprimer une images</td><td><code>docker rmi</code></td></tr>
+                <tr><td>Lancer une commande dans une image</td><td><code>docker run --rm -it ImageName "command"</code></td></tr>
+                <tr><td>Lancer une commande dans un container actif</td><td><code>docker exec -it ContainerName "command"</code></td></tr>
+            </table>
         </section>
 
 
         <section  data-background="images/wall0.jpg" data-transition="none">
-            <h1>Conclusion</h1>
+            <h2>Déploiement</h2>
+
+            <div style="display: flex">
+                <div style="margin: 0 40px">
+                    Je te laisse compléter
+                </div>
+
+                <div style="margin: 0 40px">
+                    <img src="images/deploy.gif" />
+                </div>
+            </div>
         </section>
 
-
-        <section  data-background="images/wall0.jpg" data-transition="none">
-            <h2>Questions?</h2>
+        <section  data-background="images/wall1.jpg" data-transition="none">
             <h2>Merci!</h2>
+            <h2>Des <span class="emph">questions</span> ou des <br /><span class="emph">retours</span> d'expérience ?</h2>
+
+            <p>Slides : <a href="https://github.com/tychota/conf-docker-bam">https://github.com/tychota/conf-docker-bam</a></p>
         </section>
 
       </div> <!-- .slides -->
