@@ -293,10 +293,11 @@ docker run -p 3000:80 -d username/my-app
 
             <p>Sur MacOS, docker tourne dans une machine virtuelle</p>
             <pre><code class"bash">
-$ docker-machine ps
-TODO : Example de réponse
-$ wget IP:3000
-TODO resultat sur le 1er commit
+$ docker-machine ls
+NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER    ERRORS
+default   *        virtualbox   Running   tcp://192.168.99.100:2376           v1.10.3
+$ curl 192.168.99.100:3000
+Hello World!
             </code></pre>
         </section>
 
@@ -469,13 +470,26 @@ back:
 
             <div style="display: flex">
                 <div style="margin: 0 40px">
-                    Je te laisse compléter
+                    Docker-compose special pour la prod :
+                    <ul>
+                        <li>Pas de Volume</li>
+                        <li>Specifier les ports/env</li>
+                        <li>Ajouter des services pour les logs, ...</li>
+                        <li>Relancer le container au démarage : <code>restart: always</code></li>
+                    </ul>
                 </div>
 
                 <div style="margin: 0 40px">
                     <img src="images/deploy.gif" />
                 </div>
             </div>
+
+            Puis, pour relancer back :
+            <pre><code class"bash">
+$ git pull
+$ docker-compose build back
+$ docker-compose up --no-deps -d back
+            </code></pre>
         </section>
 
         <section  data-background="images/wall1.jpg" data-transition="none">
