@@ -168,69 +168,11 @@
         -->
 
         <section data-background="images/wall2.jpg" data-transition="none">
-					<h1>What is docker ?</h1>
+					<h1>Que-'est ce que c'est ?</h1>
 				</section>
-
-        <section data-background="images/wall1.jpg" data-transition="none">
-          <h1>Pros ?</h1>
-        </section>
-
-
-				<section data-background="images/wall1.jpg" data-transition="none">
-          <h2>
-            Single reponsability
-          </h2>
-				</section>
-
-        <section data-background="images/wall1.jpg" data-transition="none">
-          <h2>
-            Isolation
-          </h2>
-				</section>
-
-        <section data-background="images/wall1.jpg" data-transition="none">
-          <h2>
-            Environment creation and provisionning
-          </h2>
-				</section>
-
-        <section data-background="images/wall1.jpg" data-transition="none">
-          <h2>
-            Usable in Production
-          </h2>
-				</section>
-
-        <section data-background="images/wall0.jpg" data-transition="none">
-          <h1> Cons </h1>
-				</section>
-
-        <section data-background="images/wall0.jpg" data-transition="none">
-          <h2>
-            Reacreate every time
-          </h2>
-				</section>
-
-        <section data-background="images/wall0.jpg" data-transition="none">
-          <h2>
-            Layered architecture make it slow.
-          </h2>
-				</section>
-
-        <section data-background="images/wall0.jpg" data-transition="none">
-          <h2>
-            Optimized for Linux
-          </h2>
-				</section>
-
-
-        <!--
-        ========================================================================
-        Partie 2
-        ========================================================================
-        -->
-
-				<section data-background="images/wall2.jpg" data-transition="none">
-          <h1>How it works ?</h1>
+        
+        <section data-background="images/wall2.jpg" data-transition="none">
+          <h1>Comment ça marche ?</h1>
 				</section>
 
 				<section data-background="images/wall2.jpg" data-transition="none">
@@ -244,8 +186,61 @@
 				</section>
 
         <section data-background="images/wall2.jpg" data-transition="none">
-          <h2>It uses Linux Kernel</h2>
+          <h2>Noyau linux</h2>
         </section>
+        
+        <section data-background="images/wall2.jpg" data-transition="none">
+          <h2>Système par couches</h2>
+          <div>
+            <img src="images/layer.png">
+          </div>
+        </section>
+
+        <section data-background="images/wall1.jpg" data-transition="none">
+          <h1>Pour</h1>
+        </section>
+
+        <section data-background="images/wall1.jpg" data-transition="none">
+          <h2>
+            Force à découper en plusieurs containeurs
+          </h2>
+          <h3>Plus simple d'augmenter en taille</h3>
+				</section>
+
+        <section data-background="images/wall1.jpg" data-transition="none">
+          <h2>
+            Code et envionnement versionnés ensemble
+          </h2>
+          <h3> Donc rollback facile</h3>
+				</section>
+
+        <section data-background="images/wall1.jpg" data-transition="none">
+          <h2>
+            Environnement ISO car tout est écrit
+          </h2>
+				</section>
+        
+        <section data-background="images/wall1.jpg" data-transition="none">
+          <h2>
+            Pas de surprise liée au cache
+          </h2>
+				</section>
+
+        <section data-background="images/wall0.jpg" data-transition="none">
+          <h1> Contre </h1>
+				</section>
+
+        <section data-background="images/wall0.jpg" data-transition="none">
+          <h2>
+            Recrée à chaque fois
+          </h2>
+				</section>
+
+        <section data-background="images/wall0.jpg" data-transition="none">
+          <h2>
+            L'architecture par couches peut rendre les changements longs
+          </h2>
+				</section>
 
         <!--
         ========================================================================
@@ -367,7 +362,7 @@ db:
 
 
         <section data-background="images/wall2.jpg" data-transition="none">
-            <p>Utilisation :</p>
+            <p>Utilisations :</p>
 
             <pre><code class"js">
 "mysql://user:pass@db:3306/database"
@@ -389,11 +384,11 @@ db:
         </section>
 
         <section data-background="images/wall2.jpg" data-transition="none">
-            <h1>Astuces pratique</h1>
+            <h1>Astuces pratiques</h1>
         </section>
 
         <section data-background="images/wall2.jpg" data-transition="none">
-            <h2>Gestion des souces</h2>
+            <h2>Gestion des sources</h2>
 
             <p>Dans le même Dossier/repo (<code class="bash">git submodule</code> éventuellement)</p>
 
@@ -421,7 +416,7 @@ back:
         </section>
 
         <section data-background="images/wall2.jpg" data-transition="none">
-            <h3>Gestion des log/uploads/cache</h3>
+            <h3>Gestion des logs/uploads/cache</h3>
 
             <p>Pour pas tout perdre à chaque build</p>
             <pre><code class"Dockerfile">
@@ -442,16 +437,16 @@ back:
             <h1>Manipulation des Container</h1>
         </section>
 
-        <section  data-background="images/wall0.jpg" data-transition="none">
+        <section  data-background="images/wall2.jpg" data-transition="none">
             <h2>Image vs Container</h2>
 
-            <p>Image : System buildé et configuré n'éyant jamais tourné</p>
+            <p>Image : System buildé et configuré n'ayant jamais tourné</p>
 
             <p>Container : Instance d'une image ayant tournée / en fonctionnement</p>
         </section>
 
-        <section  data-background="images/wall0.jpg" data-transition="none">
-            <h2>Commandes basique</h2>
+        <section  data-background="images/wall2.jpg" data-transition="none">
+            <h2>Commandes basiques</h2>
 
             <table>
                 <tr><td>Container actifs</td><td><code>docker ps</code></td></tr>
@@ -465,7 +460,7 @@ back:
         </section>
 
 
-        <section  data-background="images/wall0.jpg" data-transition="none">
+        <section  data-background="images/wall2.jpg" data-transition="none">
             <h2>Déploiement</h2>
 
             <div style="display: flex">
@@ -492,7 +487,7 @@ $ docker-compose up --no-deps -d back
             </code></pre>
         </section>
 
-        <section  data-background="images/wall1.jpg" data-transition="none">
+        <section  data-background="images/wall2.jpg" data-transition="none">
             <h2>Merci!</h2>
             <h2>Des <span class="emph">questions</span> ou des <br /><span class="emph">retours</span> d'expérience ?</h2>
 
